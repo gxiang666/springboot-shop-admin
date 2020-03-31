@@ -5,10 +5,12 @@ package com.xiong.shop.enums;
  * @Date: 2020/3/31
  */
 public enum ResponseResultEnum {
-    // 成功
+    // 统一成功
     SUCCESS(200, "成功"),
-    // 失败
+    // 通用失败
     FAILED(400, "失败"),
+    USER_NOT_EXISTS(600, "用户不存在"),
+    USER_OR_PASSWORD_NOT_CORRECT(601, "用户或密码不正确"),
     ;
 
     private Integer code;
