@@ -2,8 +2,7 @@ package com.xiong.shop.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Controller;
  * @author xionggaoxiang
  * @since 2020-03-31
  */
-@Controller
+@RestController
 @RequestMapping("/sysMenu")
 public class SysMenuController {
 
