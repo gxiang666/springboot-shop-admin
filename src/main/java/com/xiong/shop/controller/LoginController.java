@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Objects;
 
 /**
@@ -30,7 +31,7 @@ public class LoginController {
 
     @PostMapping("/login")
     @ApiOperation(value = "用户登录接口")
-    public ResponseResult login(@RequestBody LoginDTO loginDTO) {
+    public ResponseResult login(@RequestBody @Valid LoginDTO loginDTO) {
         QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username", loginDTO.getUsername()).eq("del_flag", 0);
         SysUser user = userService.getOne(queryWrapper);
@@ -41,7 +42,7 @@ public class LoginController {
         if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
             return ResponseResult.fail(ResponseResultEnum.USER_OR_PASSWORD_NOT_CORRECT);
         }
-        return ResponseResult.success();
+        return ResponseResult.success(user.getUsername());
     }
 
 }
