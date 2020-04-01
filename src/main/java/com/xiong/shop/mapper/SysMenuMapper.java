@@ -1,7 +1,7 @@
 package com.xiong.shop.mapper;
 
-import com.xiong.shop.entity.SysMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xiong.shop.entity.SysMenu;
 
 /**
  * <p>
