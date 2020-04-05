@@ -1,7 +1,7 @@
 package com.xiong.shop.service;
 
-import com.xiong.shop.entity.SysMenu;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xiong.shop.entity.SysMenu;
 
 /**
  * <p>

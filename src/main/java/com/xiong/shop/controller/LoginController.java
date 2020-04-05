@@ -26,23 +26,23 @@ import java.util.Objects;
 @Api(tags = "登录管理")
 public class LoginController {
 
-    @Autowired
-    private SysUserService userService;
-
-    @PostMapping("/login")
-    @ApiOperation(value = "用户登录接口")
-    public ResponseResult login(@RequestBody @Valid LoginDTO loginDTO) {
-        QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("username", loginDTO.getUsername()).eq("del_flag", 0);
-        SysUser user = userService.getOne(queryWrapper);
-        if (Objects.isNull(user)) {
-            return ResponseResult.fail(ResponseResultEnum.USER_NOT_EXISTS);
-        }
-        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
-            return ResponseResult.fail(ResponseResultEnum.USER_OR_PASSWORD_NOT_CORRECT);
-        }
-        return ResponseResult.success(user.getUsername());
-    }
+//    @Autowired
+//    private SysUserService userService;
+//
+//    @PostMapping("/login")
+//    @ApiOperation(value = "用户登录接口")
+//    public ResponseResult login(@RequestBody @Valid LoginDTO loginDTO) {
+//        QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.eq("username", loginDTO.getUsername()).eq("del_flag", 0);
+//        SysUser user = userService.getOne(queryWrapper);
+//        if (Objects.isNull(user)) {
+//            return ResponseResult.fail(ResponseResultEnum.USER_NOT_EXISTS);
+//        }
+//        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
+//            return ResponseResult.fail(ResponseResultEnum.USER_OR_PASSWORD_NOT_CORRECT);
+//        }
+//        return ResponseResult.success(user.getUsername());
+//    }
 
 }
