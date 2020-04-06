@@ -9,6 +9,7 @@ import com.xiong.shop.dto.MenuCreatelDTO;
 import com.xiong.shop.dto.MenuUpdateDTO;
 import com.xiong.shop.dto.SelectMenuDTO;
 import com.xiong.shop.entity.SysMenu;
+import com.xiong.shop.entity.SysUser;
 import com.xiong.shop.result.ResponseResult;
 import com.xiong.shop.service.SysMenuService;
 import io.swagger.annotations.Api;
@@ -16,6 +17,8 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -98,4 +101,17 @@ public class SysMenuController {
         return ResponseResult.success(menuService.getById(commonDTO.getId()));
     }
 
+    @PostMapping(value = "/selecCurrentUsertMenuTree")
+    @ApiOperation(value = "查询当前用户拥有的菜单权限")
+    public ResponseResult selecCurrentUsertMenuTree() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Long userId = ((SysUser) authentication.getPrincipal()).getId();
+        return ResponseResult.success(menuService.selecCurrentUsertMenuTree(userId));
+    }
+
+    @PostMapping(value = "/selecAllMenuTree")
+    @ApiOperation(value = "查询所有的菜单权限")
+    public ResponseResult selecAllMenuTree() {
+        return ResponseResult.success(menuService.selecCurrentUsertMenuTree(null));
+    }
 }

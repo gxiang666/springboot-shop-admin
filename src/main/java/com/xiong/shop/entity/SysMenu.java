@@ -1,6 +1,7 @@
 package com.xiong.shop.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,6 +11,7 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -75,5 +77,6 @@ public class SysMenu implements Serializable {
     @JsonIgnore
     private Boolean delFlag;
 
-
+    @TableField(exist = false)
+    private List<SysMenu> menuList;
 }
