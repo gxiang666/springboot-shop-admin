@@ -20,8 +20,13 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                // 域名
+                // 允许所有域名请求
                 .allowedOrigins("*")
+                // 允许携带所有请求头
+                .allowedHeaders("*")
+                // 暴露响应头给前端
+                .exposedHeaders("Authorization")
+                // 允许所有方法请求
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
                 // 超时时间
                 .maxAge(3600)

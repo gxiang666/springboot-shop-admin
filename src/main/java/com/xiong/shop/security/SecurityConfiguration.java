@@ -8,10 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.header.Header;
-import org.springframework.security.web.header.writers.StaticHeadersWriter;
-
-import java.util.Arrays;
 
 /**
  * @Author: XiongGaoXiang
@@ -39,10 +35,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .sessionManagement().disable()
                 .cors()
-                .and()
-                .headers().addHeaderWriter(new StaticHeadersWriter(Arrays.asList(
-                new Header("Access-control-Allow-Origin", "*"),
-                new Header("Access-Control-Expose-Headers", "Authorization"))))
+//                .and()
+//                .headers().addHeaderWriter(new StaticHeadersWriter(Arrays.asList(
+//                new Header("Access-control-Allow-Origin", "*"),
+//                new Header("Access-Control-Expose-Headers", "Authorization"))))
                 .and()
                 .apply(jsonLoginSecurityConfiguration)
                 .and()
